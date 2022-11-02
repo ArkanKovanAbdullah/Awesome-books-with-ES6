@@ -51,6 +51,4 @@ const nowDay = now.day;
 const nowHour = now.hour;
 const nowMinute = now.minute;
 const nowSecond = now.second;
-console.log(now);
-
 variables.dateNow.innerHTML = `${nowYear}/${nowMonth}/${nowDay}, ${nowHour}:${nowMinute}:${nowSecond}`;

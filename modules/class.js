@@ -5,11 +5,11 @@ export default class Collect {
   constructor() {
     this.books = JSON.parse(localStorage.getItem('storedBooks')) || []; // Create an empty books array if there is no storted data in local storage with the key storedBooks.
   }
-  removeBook(index) {
+  removeBook = (index) => {
     this.books.splice(index, 1); // take off the index from array.
     window.localStorage.setItem('storedBooks', JSON.stringify(this.books));
     }
-  displayBooks() {
+  displayBooks = () => {
     booksContainer.innerHTML = ''; // Make the book showing section empty
     for (let i = 0; i < this.books.length; i += 1) {
       const book = document.createElement('li'); // Each book, Each row.
@@ -28,7 +28,7 @@ export default class Collect {
     listContainer.append(booksContainer);
     }
   }
-  addBook(title, author) {
+  addBook = (title, author) => {
     this.books.push({ title, author });
     this.displayBooks();
   }
