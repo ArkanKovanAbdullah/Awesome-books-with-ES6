@@ -1,5 +1,6 @@
 import Collect from './modules/class.js';
-import * as variables from './class.js';
+import * as variables from './modules/class.js';
+import * as luxon from './modules/luxon.js';
 
 variables.booksContainer.classList.add('books-list');
 const bookie = new Collect();
@@ -26,30 +27,30 @@ document.forms[0].onsubmit = (event) => {
 };
 
 variables.listBtn.addEventListener('click', () => {
-  listOfBooksOnScreen.classList.remove('display-none');
-  addNewBookForm.classList.add('display-none');
-  contact.classList.add('display-none');
+  variables.listOfBooksOnScreen.classList.remove('display-none');
+  variables.addNewBookForm.classList.add('display-none');
+  variables.contact.classList.add('display-none');
 });
 
 variables.addNewBtn.addEventListener('click', () => {
-  listOfBooksOnScreen.classList.add('display-none');
-  addNewBookForm.classList.remove('display-none');
-  contact.classList.add('display-none');
+  variables.listOfBooksOnScreen.classList.add('display-none');
+  variables.addNewBookForm.classList.remove('display-none');
+  variables.contact.classList.add('display-none');
 });
 
 variables.contactBtn.addEventListener('click', () => {
-  listOfBooksOnScreen.classList.add('display-none');
-  addNewBookForm.classList.add('display-none');
-  contact.classList.remove('display-none');
+  variables.listOfBooksOnScreen.classList.add('display-none');
+  variables.addNewBookForm.classList.add('display-none');
+  variables.contact.classList.remove('display-none');
 });
 
-const dateNow = document.getElementById('todays-date');
-const today = new Date();
-const month = today.getMonth() + 1;
-const year = today.getFullYear();
-const date = today.getDate();
-const hours = today.getHours();
-const minutes = today.getMinutes();
-const seconds = today.getSeconds();
+const now = luxon.DateTime.now();
+const nowYear = now.year;
+const nowMonth = now.month;
+const nowDay = now.day;
+const nowHour = now.hour;
+const nowMinute = now.minute;
+const nowSecond = now.second;
+console.log(now);
 
-dateNow.innerHTML = `${month}/${date}/${year}, ${hours}:${minutes}:${seconds}`;
+variables.dateNow.innerHTML = `${nowYear}/${nowMonth}/${nowDay}, ${nowHour}:${nowMinute}:${nowSecond}`;

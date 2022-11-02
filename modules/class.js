@@ -9,7 +9,7 @@ export default class Collect {
     }
   
     displayBooks() {
-        variables.kbooksContainer.innerHTML = ''; // Make the book showing section empty
+        booksContainer.innerHTML = ''; // Make the book showing section empty
       for (let i = 0; i < this.books.length; i += 1) {
         const book = document.createElement('li'); // Each book, Each row.
         book.className = 'make-flex';
@@ -34,9 +34,6 @@ export default class Collect {
     }
   }
 
-
-export {listContainer, booksContainer, listOfBooksOnScreen, addNewBookForm, listBtn, addNewBtn, contact, contactBtn};
-
 const listContainer = document.getElementById('list');
 const booksContainer = document.createElement('ul');
 const listOfBooksOnScreen = document.getElementById('list');
@@ -45,3 +42,6 @@ const listBtn = document.getElementById('list-btn');
 const addNewBtn = document.getElementById('add-new-btn');
 const contact = document.getElementById('contact');
 const contactBtn = document.getElementById('contact-btn');
+const dateNow = document.getElementById('todays-date');
+
+export {listContainer, booksContainer, listOfBooksOnScreen, addNewBookForm, listBtn, addNewBtn, contact, contactBtn, dateNow};
