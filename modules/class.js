@@ -1,6 +1,6 @@
 export default class Collect {
   constructor() {
-  this.books = JSON.parse(localStorage.getItem('storedBooks')) || []; // Create an empty books array if there is no storted data in local storage with the key storedBooks.
+    this.books = JSON.parse(localStorage.getItem('storedBooks')) || []; // Create an empty books array if there is no storted data in local storage with the key storedBooks.
   }
   removeBook(index) {
     this.books.splice(index, 1); // take off the index from array.
@@ -21,15 +21,15 @@ export default class Collect {
         this.removeBook(i);
         this.displayBooks();
       };
-      booksContainer.append(book);
-      listContainer.append(booksContainer);
-      }
+    booksContainer.append(book);
+    listContainer.append(booksContainer);
     }
+  }
   addBook(title, author) {
     this.books.push({ title, author });
     this.displayBooks();
-    }
   }
+}
 
 const listContainer = document.getElementById('list');
 const booksContainer = document.createElement('ul');
@@ -41,4 +41,6 @@ const contact = document.getElementById('contact');
 const contactBtn = document.getElementById('contact-btn');
 const dateNow = document.getElementById('todays-date');
 
-export {listContainer, booksContainer, listOfBooksOnScreen, addNewBookForm, listBtn, addNewBtn, contact, contactBtn, dateNow};
+export {
+  listContainer, booksContainer, listOfBooksOnScreen, addNewBookForm, listBtn, addNewBtn, contact, contactBtn, dateNow 
+  };
