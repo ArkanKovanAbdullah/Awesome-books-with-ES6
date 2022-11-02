@@ -1,36 +1,33 @@
 export default class Collect {
-    constructor() {
-      this.books = JSON.parse(localStorage.getItem('storedBooks')) || []; //Create an empty books array if there is no storted data in local storage with the key storedBooks.
+  constructor() {
+  this.books = JSON.parse(localStorage.getItem('storedBooks')) || []; // Create an empty books array if there is no storted data in local storage with the key storedBooks.
+  }
+  removeBook(index) {
+    this.books.splice(index, 1); // take off the index from array.
+    window.localStorage.setItem('storedBooks', JSON.stringify(this.books));
     }
-  
-    removeBook(index) {
-      this.books.splice(index, 1); // take off the index from array.
-      window.localStorage.setItem('storedBooks', JSON.stringify(this.books));
-    }
-  
-    displayBooks() {
-        booksContainer.innerHTML = ''; // Make the book showing section empty
-      for (let i = 0; i < this.books.length; i += 1) {
-        const book = document.createElement('li'); // Each book, Each row.
-        book.className = 'make-flex';
-        book.classList.add('book-list')
-        book.innerHTML = `<span class="title"> "${this.books[i].title}" by ${this.books[i].author}</span>`; // Give each row and each books its credintials. 
-        const btn = document.createElement('button');
-        btn.className = 'list-btn';
-        btn.textContent = 'Remove';
-        book.append(btn);
-        btn.onclick = () => {
-          this.removeBook(i);
-          this.displayBooks();
-        };
-        booksContainer.append(book);
-        listContainer.append(booksContainer);
+  displayBooks() {
+    booksContainer.innerHTML = ''; // Make the book showing section empty
+    for (let i = 0; i < this.books.length; i += 1) {
+      const book = document.createElement('li'); // Each book, Each row.
+      book.className = 'make-flex';
+      book.classList.add('book-list')
+      book.innerHTML = `<span class="title"> "${this.books[i].title}" by ${this.books[i].author}</span>`; // Give each row and each books its credintials. 
+      const btn = document.createElement('button');
+      btn.className = 'list-btn';
+      btn.textContent = 'Remove';
+      book.append(btn);
+      btn.onclick = () => {
+        this.removeBook(i);
+        this.displayBooks();
+      };
+      booksContainer.append(book);
+      listContainer.append(booksContainer);
       }
     }
-  
-    addBook(title, author) {
-      this.books.push({ title, author });
-      this.displayBooks();
+  addBook(title, author) {
+    this.books.push({ title, author });
+    this.displayBooks();
     }
   }
 
